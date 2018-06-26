@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+</head>
+<body>
+	<nav th:replace="fragments/navigation :: navbar"></nav>
+	<form th:action="@{/product/create}" th:object="${product}"
+		method="post">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm">
+					Product name :
+				</div>
+				<div class="col-sm">
+					Product price :
+				</div>
+				<div class="col-sm">
+					Product sub catalog :
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<input type="text" th:field="*{name}" />
+				</div>
+				<div class="col-sm">
+					<input type="text" th:field="*{price}" />
+				</div>
+				<div class="col-sm">
+					<select class="form-control" th:field="*{productSubCatalog.id}" id="productSubCatalogs">
+						<option th:each="productSubCatalogValue : ${productSubCatalogs}" th:value="${productSubCatalogValue.id}" th:text="${productSubCatalogValue.name}"></option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<input type="submit" value="Submit" />
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

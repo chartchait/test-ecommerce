@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+</head>
+<body>
+	<nav th:replace="fragments/navigation :: navbar"></nav>
+
+
+	<table class="table table-striped table-bordered" style="width: 80%;align-content: center;">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Product Catalog</th>
+				<th scope="col">Product Sub Catalog</th>
+			</tr>
+		</thead>
+		<tbody>
+			<th:block th:each="productCatalog: ${productCatalogs}">
+				<tr th:each="productSubCatalog: ${productCatalog.productSubCatalogs}">
+					<td scope="row">1</td>
+					<td th:text="${productCatalog.name}"/>
+					<td th:text="${productSubCatalog.name}"/>
+				</tr>
+			</th:block>
+		</tbody>
+	</table>
+</body>
+</html>
